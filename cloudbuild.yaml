@@ -1,10 +1,10 @@
 steps:
     # Build the container image
     - name: 'gcr.io/cloud-builders/docker'
-        args: ['build', '-t', 'gcr.io/poke-her/poker:$COMMIT_SHA', '.']
+        args: ['build', '-t', 'gcr.io/$PROJECT_ID/poker:$COMMIT_SHA', '.']
     # Push the image to Container Registry
     - name: 'gcr.io/cloud-builders/docker'
-        args: ['push', 'gcr.io/poke-her/poker:$COMMIT_SHA']
+        args: ['push', 'gcr.io/$PROJECT_ID/poker:$COMMIT_SHA']
     # Deploy image to Cloud Run
     - name: 'gcr.io/cloud-builders/gcloud'
         args:
@@ -12,10 +12,10 @@ steps:
         - 'deploy'
         - 'deploy-app'
         - '--image'
-        - 'gcr.io/poke-her/poker:$COMMIT_SHA'
+        - 'gcr.io/$PROJECT_ID/poker:$COMMIT_SHA'
         - '--region'
         - 'us-central1'
         - '--platform'
         - 'managed'
     images:
-    - gcr.io/poke-her/poker
+    - gcr.io/$PROJECT_ID/poker
