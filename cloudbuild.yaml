@@ -18,4 +18,4 @@ steps:
         - '--platform'
         - 'managed'
     images:
-        - gcr.io/poke-her/poker
+    - gcr.io/poke-her/poker
