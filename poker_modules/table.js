@@ -430,6 +430,20 @@ Table.prototype.endPhase = function() {
 	}
 };
 
+Table.prototype.increaseBlind = function() {
+	this.public.smallBlind *= 2;
+	this.public.bigBlind = this.public.smallBlind * 2;
+
+	this.log({
+		message: 'Blind increased to ' + this.public.bigBlind + '/' + this.public.smallBlind,
+		action: '',
+		seat: '',
+		notification: ''
+	});
+
+	this.emitEvent( 'table-data', this.public );
+};
+
 /**
  * When a player posts the small blind
  * @param int seat
@@ -799,6 +813,8 @@ Table.prototype.endRound = function() {
  */
 Table.prototype.stopGame = function() {
 	this.public.phase = null;
+	this.public.smallBlind = 1;
+	this.public.bigBlind = this.public.smallBlind * 2;
 	this.pot.reset();
 	this.public.activeSeat = null;
 	this.public.board = ['', '', '', '', ''];

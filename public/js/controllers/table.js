@@ -179,6 +179,14 @@ function( $scope, $rootScope, $http, $routeParams, $timeout, sounds ) {
 		});
 	}
 
+	$scope.increaseBlind = function() {
+		socket.emit( 'increaseBlind', function( response ) {
+			if( response.success ) {
+				sounds.playRaiseSound();
+			}
+		});
+	} 
+
 	// Post a blind (or not)
 	$scope.postBlind = function( posted ) {
 		socket.emit( 'postBlind', posted, function( response ) {

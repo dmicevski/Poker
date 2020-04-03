@@ -232,6 +232,17 @@ io.sockets.on('connection', function( socket ) {
 		}
 	});
 
+	socket.on('increaseBlind', function( callback ) {
+		if( players[socket.id].sittingOnTable !== false && players[socket.id].seat !== null ) {
+			console.log('here');
+			var tableId = players[socket.id].sittingOnTable;
+
+			tables[tableId].increaseBlind();
+
+			callback( { 'success': true } );
+		}
+	});
+
 	/**
 	 * When a player posts a blind
 	 * @param bool postedBlind (Shows if the user posted the blind or not)
