@@ -1,4 +1,5 @@
 <button id="increase-blind" class="button clickable" ng-click="increaseBlind()" ng-show="$root.sittingOnTable !== null">Increase Blind</button>
+<a id="to-lobby" class="button" href="/" ng-show="!$root.sittingOnTable" ng-click="leaveRoom()">Lobby</a>
 <div id="table-wrap">
 	<div class="modal-wrap" ng-show="buyInModalVisible">
 		<div class="modal">
@@ -18,9 +19,7 @@
 		<div id="felt"></div>
 	</div>
 	<div class="row">
-		<div class="cell">
-			<a id="to-lobby" class="button" href="/" ng-show="!$root.sittingOnTable" ng-click="leaveRoom()">< Lobby</a>
-		</div>
+		<div class="cell"></div>
 		<div class="cell"></div>
 		<div class="cell"></div>
 		<div class="cell"></div>
